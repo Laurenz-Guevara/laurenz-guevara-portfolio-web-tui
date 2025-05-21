@@ -61,7 +61,9 @@ export default function Header() {
             <span>:</span>
           </div>
           <span className="text-[#89b4fa]">~/portfolio</span>
-          <span className="text-[#cdd6f4]">$</span>
+          <span className="text-[#cdd6f4]">
+            $ ssh tui-resume.laurenzguevara.com
+          </span>
         </div>
         <div className="text-xs">
           <span className="mr-4">CPU: {cpuUsage}%</span>
