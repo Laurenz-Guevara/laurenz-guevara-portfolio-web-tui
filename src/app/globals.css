@@ -7,6 +7,11 @@
 
 @theme {
   --color-secondary: #45475a;
+  --color-termGreen: #a6e3a1;
+  --color-termOrange: #fab387;
+  --color-termCyan: #89dceb;
+  --color-termPurple: #b4befe;
+  --color-termBlue: #89b4fa;
 }
 
 @theme inline {

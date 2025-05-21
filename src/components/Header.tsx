@@ -57,18 +57,24 @@ export default function Header() {
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div>
-            <span className="text-[#b4befe]">laurenz@portfolio</span>
+            <span className="text-termPurple">laurenz@portfolio</span>
             <span>:</span>
           </div>
-          <span className="text-[#89b4fa]">~/portfolio</span>
-          <span className="text-[#cdd6f4]">
+          <span className="text-termBlue">~/portfolio</span>
+          <span>
             $ ssh tui-resume.laurenzguevara.com
           </span>
         </div>
-        <div className="text-xs">
-          <span className="mr-4">CPU: {cpuUsage}%</span>
-          <span className="mr-4">MEM: {memUsage}MB/8GB</span>
-          <span>{formatTime(currentTime)}</span>
+        <div className="text-xs flex items-center">
+          <div className="px-2 py-0.5 rounded mr-2 text-termGreen">
+            CPU: {cpuUsage}%
+          </div>
+          <div className="px-2 py-0.5 rounded mr-2 text-termOrange">
+            MEM: {memUsage}MB/4GB
+          </div>
+          <div className="px-2 py-0.5 rounded text-termCyan">
+            {formatTime(currentTime)}
+          </div>
         </div>
       </div>
     </header>
