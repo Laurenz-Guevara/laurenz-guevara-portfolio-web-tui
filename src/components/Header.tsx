@@ -3,11 +3,15 @@
 import { useEffect, useState } from "react";
 
 export default function Header() {
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [currentTime, setCurrentTime] = useState<Date>();
   const [cpuUsage, setCpuUsage] = useState(2);
   const [memUsage, setMemUsage] = useState(124);
 
   useEffect(() => {
+    if (currentTime === undefined) {
+      setCurrentTime(new Date());
+    }
+
     const timeInterval = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
@@ -65,17 +69,19 @@ export default function Header() {
             $ ssh tui-resume.laurenzguevara.com
           </span>
         </div>
-        <div className="text-xs flex items-center">
-          <div className="px-2 py-0.5 rounded mr-2 text-green">
-            CPU: {cpuUsage}%
+        {currentTime !== undefined && (
+          <div className="text-xs flex items-center">
+            <div className="px-2 py-0.5 rounded mr-2 text-green">
+              CPU: {cpuUsage}%
+            </div>
+            <div className="px-2 py-0.5 rounded mr-2 text-peach">
+              MEM: {memUsage}MB/4GB
+            </div>
+            <div className="px-2 py-0.5 rounded text-sky">
+              {currentTime !== undefined ? formatTime(currentTime) : ""}
+            </div>
           </div>
-          <div className="px-2 py-0.5 rounded mr-2 text-peach">
-            MEM: {memUsage}MB/4GB
-          </div>
-          <div className="px-2 py-0.5 rounded text-sky">
-            {formatTime(currentTime)}
-          </div>
-        </div>
+        )}
       </div>
     </header>
   );
