@@ -6,7 +6,7 @@ export default function Contact() {
       <div className="mb-6">
         <p className="text-yellow mb-2">CONTACT INFOMATION</p>
         <p className="text-lavender mb-1">
-          $ cat /resume/contact.txt
+          $ cat resume/contact.txt
         </p>
       </div>
 
