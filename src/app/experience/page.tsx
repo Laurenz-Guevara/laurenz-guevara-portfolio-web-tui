@@ -1,27 +1,8 @@
-"use client";
-
-import { useQuery } from "@tanstack/react-query";
+import WorkExperience from "@/components/WorkExperience";
 import Link from "next/link";
-
-interface Experience {
-  company: string;
-  position: string;
-  start_date: string;
-  end_date: string;
-  tech_stack: string;
-  responsibilities: string[];
-}
+import { Suspense } from "react";
 
 export default function Experience() {
-  const { data: workExperience } = useQuery({
-    queryKey: ["experience"],
-    staleTime: 1000 * 60 * 30,
-    queryFn: async (): Promise<Experience[]> => {
-      const response = await fetch("https://api.laurenzguevara.com/experience");
-      return await response.json();
-    },
-  });
-
   return (
     <section className="p-4">
       <div className="mb-6">
@@ -37,32 +18,52 @@ export default function Experience() {
           </Link>
         </p>
       </div>
-      {workExperience?.map((experience) => {
-        return (
-          <div
-            key={experience.company}
-            className="border border-surface-1 p-3 mb-6"
-          >
-            <div className="flex justify-between mb-2">
-              <p className="text-green">{experience.company}</p>
-              <p className="text-maroon">
-                {experience.start_date} - {experience.end_date}
-              </p>
-            </div>
-            <p className="text-lavender mb-2">{experience.position}</p>
-            <ul className="list-disc list-inside space-y-2 ml-2">
-              {experience.responsibilities.map((responsibility, idx) => (
-                <li key={idx}>
-                  {responsibility}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-2">
-              Stack: <span className="text-peach">{experience.tech_stack}</span>
-            </p>
-          </div>
-        );
-      })}
+      <Suspense fallback={<ExperienceSkeletons />}>
+        <WorkExperience />
+      </Suspense>
     </section>
+  );
+}
+
+export function ExperienceSkeletons() {
+  return (
+    <>
+      <div className="border border-surface-1 p-3 mb-6 h-52 space-y-4 animate-pulse">
+        <div className="mt-1.5 h-4 w-24 bg-surface-0/70"></div>
+        <div className="mt-1.5 h-4 w-36 bg-surface-0/70"></div>
+        <div className="mt-1.5 h-4 min-w-24 w-full max-w-96 bg-surface-0/70">
+        </div>
+        <div className="mt-1.5 h-4 min-w-24 w-full max-w-96 bg-surface-0/70">
+        </div>
+        <div className="mt-1.5 h-4 min-w-24 w-full max-w-96 bg-surface-0/70">
+        </div>
+        <div className="mt-1.5 h-4 min-w-16 w-full max-w-60 bg-surface-0/70">
+        </div>
+      </div>
+      <div className="border border-surface-1 p-3 mb-6 h-52 space-y-4 animate-pulse">
+        <div className="mt-1.5 h-4 w-24 bg-surface-0/70"></div>
+        <div className="mt-1.5 h-4 w-36 bg-surface-0/70"></div>
+        <div className="mt-1.5 h-4 min-w-24 w-full max-w-96 bg-surface-0/70">
+        </div>
+        <div className="mt-1.5 h-4 min-w-24 w-full max-w-96 bg-surface-0/70">
+        </div>
+        <div className="mt-1.5 h-4 min-w-24 w-full max-w-96 bg-surface-0/70">
+        </div>
+        <div className="mt-1.5 h-4 min-w-16 w-full max-w-60 bg-surface-0/70">
+        </div>
+      </div>
+      <div className="border border-surface-1 p-3 mb-6 h-52 space-y-4 animate-pulse">
+        <div className="mt-1.5 h-4 w-24 bg-surface-0/70"></div>
+        <div className="mt-1.5 h-4 w-36 bg-surface-0/70"></div>
+        <div className="mt-1.5 h-4 min-w-24 w-full max-w-96 bg-surface-0/70">
+        </div>
+        <div className="mt-1.5 h-4 min-w-24 w-full max-w-96 bg-surface-0/70">
+        </div>
+        <div className="mt-1.5 h-4 min-w-24 w-full max-w-96 bg-surface-0/70">
+        </div>
+        <div className="mt-1.5 h-4 min-w-16 w-full max-w-60 bg-surface-0/70">
+        </div>
+      </div>
+    </>
   );
 }
