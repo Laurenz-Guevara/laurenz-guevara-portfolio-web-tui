@@ -53,26 +53,26 @@ export default function Header() {
   };
 
   return (
-    <header className="p-2">
+    <header className="hidden mid:block p-2">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div>
-            <span className="text-termPurple">laurenz@portfolio</span>
+            <span className="text-lavender">laurenz@portfolio</span>
             <span>:</span>
           </div>
-          <span className="text-termBlue">~/portfolio</span>
+          <span className="text-blue">~/portfolio</span>
           <span>
             $ ssh tui-resume.laurenzguevara.com
           </span>
         </div>
         <div className="text-xs flex items-center">
-          <div className="px-2 py-0.5 rounded mr-2 text-termGreen">
+          <div className="px-2 py-0.5 rounded mr-2 text-green">
             CPU: {cpuUsage}%
           </div>
-          <div className="px-2 py-0.5 rounded mr-2 text-termOrange">
+          <div className="px-2 py-0.5 rounded mr-2 text-peach">
             MEM: {memUsage}MB/4GB
           </div>
-          <div className="px-2 py-0.5 rounded text-termCyan">
+          <div className="px-2 py-0.5 rounded text-sky">
             {formatTime(currentTime)}
           </div>
         </div>

@@ -23,8 +23,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-[#45475a] p-2">
-      <div className="flex justify-between items-center">
+    <footer className="border-t border-surface-1 p-2">
+      <div className="flex flex-wrap md:flex-nowrap justify-between items-center">
         <div
           className="flex items-center w-full cursor-text"
           onClick={() => {
@@ -33,7 +33,7 @@ export default function Footer() {
             }
           }}
         >
-          <span className="text-[#b4befe] pr-2">[guest@portfolio]$</span>
+          <span className="text-lavender pr-2">[guest@portfolio]$</span>
           <div className="relative flex-grow">
             <input
               ref={inputRef}
@@ -44,16 +44,16 @@ export default function Footer() {
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               placeholder={currentCommand}
-              className="bg-transparent border-none outline-none w-full text-[#cdd6f4] pl-0 focus:ring-0"
+              className="bg-transparent border-none outline-none w-full pl-0 focus:ring-0"
             />
             {!isFocused && inputCommand === "" && (
-              <span className="absolute left-0 top-0 text-[#cdd6f4] pointer-events-none">
+              <span className="absolute left-0 top-0 pointer-events-none">
                 {currentCommand}
               </span>
             )}
           </div>
         </div>
-        <div className="ml-4 whitespace-nowrap">
+        <div className="whitespace-nowrap">
           <span>v1.0.0 | Laurenz Guevara Portfolio | © 2025</span>
         </div>
       </div>
