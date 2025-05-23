@@ -119,7 +119,7 @@ Laurenz Guevara
           <p>
             drwxr-xr-x 2 user staff Jan 15 2023{" "}
             <span className="text-blue">
-              Twisty Moto - (Create, share and publish motorbike)
+              Twisty Moto - (Create, share and publish motorbike routes)
             </span>
           </p>
           <p>
