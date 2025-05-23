@@ -66,7 +66,7 @@ Laurenz Guevara
                 Frameworks:
               </span>
               <span>
-                React, Next.js, Express, TailwindCSS
+                React (Next.js, Vite), Express, TailwindCSS
               </span>
             </div>
 
