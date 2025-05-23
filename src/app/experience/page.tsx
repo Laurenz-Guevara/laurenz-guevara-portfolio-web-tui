@@ -15,6 +15,7 @@ interface Experience {
 export default function Experience() {
   const { data: workExperience } = useQuery({
     queryKey: ["experience"],
+    staleTime: 1000 * 60 * 30,
     queryFn: async (): Promise<Experience[]> => {
       const response = await fetch("https://api.laurenzguevara.com/experience");
       return await response.json();
