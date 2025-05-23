@@ -33,7 +33,7 @@ export default function Footer() {
             }
           }}
         >
-          <span className="text-lavender pr-2">[guest@portfolio]$</span>
+          <span className="text-lavender pr-2">[laurenz@portfolio]$</span>
           <div className="relative flex-grow">
             <input
               ref={inputRef}

@@ -61,12 +61,10 @@ export default function Header() {
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div>
-            <span className="text-lavender">laurenz@portfolio</span>
-            <span>:</span>
+            <span className="text-lavender">[laurenz@portfolio]$</span>
           </div>
-          <span className="text-blue">~/portfolio</span>
           <span>
-            $ ssh tui-resume.laurenzguevara.com
+            ssh tui-resume.laurenzguevara.com
           </span>
         </div>
         {currentTime !== undefined && (
