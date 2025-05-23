@@ -118,19 +118,15 @@ Laurenz Guevara
         <div className="font-mono">
           <p>
             drwxr-xr-x 2 user staff Jan 15 2023{" "}
-            <span className="text-blue">E-commerce Platform</span>
+            <span className="text-blue">
+              Twisty Moto - (Create, share and publish motorbike)
+            </span>
           </p>
           <p>
             drwxr-xr-x 2 user staff Mar 22 2023{" "}
-            <span className="text-blue">AI Content Generator</span>
-          </p>
-          <p>
-            drwxr-xr-x 2 user staff Jun 10 2023{" "}
-            <span className="text-blue">Analytics Dashboard</span>
-          </p>
-          <p>
-            drwxr-xr-x 2 user staff Sep 05 2023{" "}
-            <span className="text-blue">Mobile Payment App</span>
+            <span className="text-blue">
+              Cliff Crafts - (E-commerce platform for climbing shoes)
+            </span>
           </p>
         </div>
       </div>

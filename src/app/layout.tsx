@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
+import TanstackProvider from "@/components/TanstackProvider";
 
 export const metadata: Metadata = {
   title: "Laurenz Guevara",
@@ -18,14 +19,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <main className="min-h-screen flex flex-col">
-          <Header />
-          <div className="flex-1 flex flex-col">
-            <Navigation />
-            {children}
-          </div>
-          <Footer />
-        </main>
+        <TanstackProvider>
+          <main className="min-h-screen flex flex-col">
+            <Header />
+            <div className="flex-1 flex flex-col">
+              <Navigation />
+              {children}
+            </div>
+            <Footer />
+          </main>
+        </TanstackProvider>
       </body>
     </html>
   );
