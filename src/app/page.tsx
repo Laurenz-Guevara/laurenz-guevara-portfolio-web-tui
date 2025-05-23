@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div className="p-4">
+    <section className="p-4">
       <div className="mb-6">
         <p className="text-lavender mb-1">$ fastfetch</p>
         <div className="flex flex-wrap space-y-4 md:space-y-0 space-x-10">
@@ -130,6 +130,6 @@ Laurenz Guevara
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

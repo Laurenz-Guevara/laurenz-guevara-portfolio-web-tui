@@ -23,7 +23,7 @@ export default function Experience() {
   });
 
   return (
-    <div className="p-4">
+    <section className="p-4">
       <div className="mb-6">
         <p className="text-yellow mb-2">WORK EXPERIENCE</p>
         <p className="text-lavender mb-1">
@@ -63,6 +63,6 @@ export default function Experience() {
           </div>
         );
       })}
-    </div>
+    </section>
   );
 }

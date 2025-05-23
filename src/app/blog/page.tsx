@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Blog() {
   return (
-    <div className="p-4">
+    <section className="p-4">
       <div className="mb-6">
         <p className="text-yellow mb-2">BLOG POSTS</p>
         <p className="text-lavender mb-1">
@@ -62,6 +62,6 @@ export default function Blog() {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
