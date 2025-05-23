@@ -44,7 +44,7 @@ export default function Experience() {
             className="border border-surface-1 p-3 mb-6"
           >
             <div className="flex justify-between mb-2">
-              <p className="text-blue">{experience.company}</p>
+              <p className="text-green">{experience.company}</p>
               <p className="text-maroon">
                 {experience.start_date} - {experience.end_date}
               </p>
