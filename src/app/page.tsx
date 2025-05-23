@@ -58,7 +58,7 @@ Laurenz Guevara
                 Languages:
               </span>
               <span>
-                JavaScript, TypeScript, Golang
+                Typescript / Javascript, Golang
               </span>
             </div>
             <div className="flex">
