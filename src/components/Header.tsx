@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function Header() {
+export default function SystemInfomation() {
   const [currentTime, setCurrentTime] = useState<Date>();
   const [cpuUsage, setCpuUsage] = useState(2);
   const [memUsage, setMemUsage] = useState(124);
@@ -57,30 +57,20 @@ export default function Header() {
   };
 
   return (
-    <header className="hidden mid:block p-2">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div>
-            <span className="text-lavender">[laurenz@portfolio]$</span>
+    <div className="hidden sm2:block p-2">
+      {currentTime !== undefined && (
+        <div className="text-xs flex items-center">
+          <div className="px-2 py-0.5 rounded mr-2 text-green">
+            CPU: {cpuUsage}%
           </div>
-          <span>
-            ssh tui-resume.laurenzguevara.com
-          </span>
+          <div className="px-2 py-0.5 rounded mr-2 text-peach">
+            MEM: {memUsage}MB/4GB
+          </div>
+          <div className="px-2 py-0.5 rounded text-sky">
+            {currentTime !== undefined ? formatTime(currentTime) : ""}
+          </div>
         </div>
-        {currentTime !== undefined && (
-          <div className="text-xs flex items-center">
-            <div className="px-2 py-0.5 rounded mr-2 text-green">
-              CPU: {cpuUsage}%
-            </div>
-            <div className="px-2 py-0.5 rounded mr-2 text-peach">
-              MEM: {memUsage}MB/4GB
-            </div>
-            <div className="px-2 py-0.5 rounded text-sky">
-              {currentTime !== undefined ? formatTime(currentTime) : ""}
-            </div>
-          </div>
-        )}
-      </div>
-    </header>
+      )}
+    </div>
   );
 }

@@ -6,7 +6,9 @@ export default function Footer() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputCommand, setInputCommand] = useState("");
   const [isFocused, setIsFocused] = useState(false);
-  const [currentCommand, setCurrentCommand] = useState("ls -la ~");
+  const [currentCommand, setCurrentCommand] = useState(
+    "ssh tui-resume.laurenzguevara.com",
+  );
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {

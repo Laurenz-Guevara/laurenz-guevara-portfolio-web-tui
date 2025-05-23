@@ -114,7 +114,7 @@ Laurenz Guevara
       </div>
 
       <div>
-        <p className="text-lavender mb-1">$ ls -la /projects</p>
+        <p className="text-lavender mb-1">$ ls projects</p>
         <div className="font-mono">
           <p>
             drwxr-xr-x 2 user staff Jan 15 2023{" "}

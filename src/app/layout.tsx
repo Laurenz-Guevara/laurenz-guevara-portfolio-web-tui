@@ -21,7 +21,6 @@ export default function RootLayout({
       <body className="antialiased">
         <TanstackProvider>
           <main className="min-h-screen flex flex-col">
-            <Header />
             <div className="flex-1 flex flex-col">
               <Navigation />
               {children}

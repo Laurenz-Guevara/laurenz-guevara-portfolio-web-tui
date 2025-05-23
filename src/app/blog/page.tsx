@@ -6,7 +6,7 @@ export default function Blog() {
       <div className="mb-6">
         <p className="text-yellow mb-2">BLOG POSTS</p>
         <p className="text-lavender mb-1">
-          $ ls -la /blog
+          $ ls blog
         </p>
       </div>
       <div className="space-y-6">
