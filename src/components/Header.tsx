@@ -53,7 +53,7 @@ export default function Header() {
   };
 
   return (
-    <header className="border-b border-secondary p-2">
+    <header className="p-2">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div>
