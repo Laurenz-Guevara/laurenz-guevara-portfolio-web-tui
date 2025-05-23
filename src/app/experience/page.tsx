@@ -1,6 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 
 interface Experience {
   company: string;
@@ -25,7 +26,14 @@ export default function Experience() {
       <div className="mb-6">
         <p className="text-yellow mb-2">WORK EXPERIENCE</p>
         <p className="text-lavender mb-1">
-          $ cat /resume/experience.txt
+          $ curl -X GET{" "}
+          <Link
+            className="text-blue"
+            href="https://api.laurenzguevara.com/experience"
+            target="_blank"
+          >
+            https://api.laurenzguevara.com/experience
+          </Link>
         </p>
       </div>
       {workExperience !== undefined &&
