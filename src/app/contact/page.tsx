@@ -49,7 +49,7 @@ export default function Contact() {
         </p>
         <div className="border border-surface-1 p-4">
           <p className="mb-4">
-            Leave a message and I'll get back to you as soon as possible.
+            Leave a message and I&apos;ll get back to you as soon as possible.
           </p>
           <div className="space-y-4">
             <div>

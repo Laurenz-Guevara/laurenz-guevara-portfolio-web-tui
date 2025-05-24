@@ -25,7 +25,7 @@ export default function Experience() {
   );
 }
 
-export function ExperienceSkeletons() {
+function ExperienceSkeletons() {
   return (
     <>
       <div className="border border-surface-1 p-3 mb-6 h-52 space-y-4 animate-pulse">
