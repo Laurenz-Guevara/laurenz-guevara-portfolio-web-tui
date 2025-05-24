@@ -3,8 +3,8 @@ export default function Home() {
     <section className="p-4">
       <div className="mb-6">
         <p className="text-lavender mb-1">$ fastfetch</p>
-        <div className="flex flex-wrap space-y-4 md:space-y-0 space-x-10">
-          <div className="flex items-center justify-center mx-auto lg:mx-0 md:px-10">
+        <div className="flex flex-wrap space-y-4 logo:space-y-0 space-x-10">
+          <div className="flex items-center justify-center mx-auto logo:mx-0 md:px-10">
             <pre className="text-mauve text-sm">{`
 ██╗      ██████╗
 ██║     ██╔════╝
@@ -18,61 +18,57 @@ Laurenz Guevara
             </pre>
           </div>
 
-          <div className="col-span-7 space-y-2 font-mono">
-            <div className="flex">
-              <span className="text-peach font-bold w-32">Title:</span>
-              <span>Front-end Developer</span>
-            </div>
-            <div className="flex">
-              <span className="text-yellow font-bold w-32">Location:</span>
-              <span>
+          <div className="space-y-2 w-full logo:w-fit">
+            <div className="grid grid-cols-1 sm:grid-cols-12 space-y-2">
+              <span className="sm:col-span-3 text-peach font-bold w-40">
+                Title:
+              </span>
+              <span className="sm:col-span-9">
+                Front-end Developer
+              </span>
+              <span className="sm:col-span-3 text-yellow font-bold w-40">
+                Location:
+              </span>
+              <span className="sm:col-span-9">
                 United Kingdom (British National)
               </span>
-            </div>
-            <div className="flex">
-              <span className="text-green font-bold w-32">
+              <span className="sm:col-span-3 text-green font-bold w-40">
                 Experience:
               </span>
-              <span>4+ years</span>
-            </div>
-            <div className="flex">
-              <span className="text-sky font-bold w-32">Skills:</span>
-              <span>
+              <span className="sm:col-span-9">4+ years</span>
+              <span className="sm:col-span-3 text-sky font-bold w-40">
+                Skills:
+              </span>
+              <span className="sm:col-span-9">
                 React (Next.js / Vite.js), TypeScript, HTML, TailwindCSS / CSS
               </span>
-            </div>
-            <div className="flex">
-              <span className="text-lavender font-bold w-32">Status:</span>
-              <span className="text-green">
+              <span className="sm:col-span-3 text-lavender font-bold w-40">
+                Status:
+              </span>
+              <span className="sm:col-span-9 text-green">
                 Available for work
               </span>
-            </div>
-            <div className="flex">
-              <span className="text-teal font-bold w-32">
+              <span className="sm:col-span-3 text-teal font-bold w-40">
                 Distro / OS:
               </span>
-              <span>Arch Linux / Windows</span>
-            </div>
-            <div className="flex">
-              <span className="text-mauve font-bold w-32">
+              <span className="sm:col-span-9">Arch Linux / Windows</span>
+              <span className="sm:col-span-3 text-mauve font-bold w-40">
                 Languages:
               </span>
-              <span>
+              <span className="sm:col-span-9">
                 TypeScript / JavaScript, Golang
               </span>
-            </div>
-            <div className="flex">
-              <span className="text-red font-bold w-32">
+              <span className="sm:col-span-3 text-red font-bold w-40 mb-0">
                 Frameworks:
               </span>
-              <span>
+              <span className="sm:col-span-9 mb-0">
                 React (Next.js, Vite), Express, TailwindCSS
               </span>
             </div>
 
             <div className="mt-2.5 pt-2.5 border-t border-surface-1">
               <div className="flex">
-                <span className="text-mauve font-bold w-32">Colours:</span>
+                <span className="text-mauve font-bold w-40">Colours:</span>
                 <div className="flex-1">
                   <div className="flex gap-1 mb-1">
                     <span className="bg-red w-3 h-3 rounded"></span>
@@ -115,7 +111,7 @@ Laurenz Guevara
 
       <div>
         <p className="text-lavender mb-1">$ ls projects</p>
-        <div className="font-mono">
+        <div className="space-y-1 sm:space-y-0">
           <p>
             drwxr-xr-x 2 user staff Jan 15 2023{" "}
             <span className="text-blue">

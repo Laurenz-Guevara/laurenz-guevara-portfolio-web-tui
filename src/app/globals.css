@@ -41,6 +41,8 @@
 @theme inline {
   --border-primary: var(--border-color);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --breakpoint-xs: 422px;
+  --breakpoint-logo: 971px;
   --breakpoint-sm2: 46rem;
 }
 

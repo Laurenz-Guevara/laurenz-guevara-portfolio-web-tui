@@ -17,7 +17,7 @@ export default function SystemInfomation() {
     }, 1000);
 
     return () => clearInterval(timeInterval);
-  }, []);
+  }, [currentTime]);
 
   useEffect(() => {
     const fluctuationInterval = setInterval(() => {

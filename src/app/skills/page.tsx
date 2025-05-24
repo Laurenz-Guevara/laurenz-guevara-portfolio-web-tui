@@ -13,22 +13,22 @@ export default function Skills() {
             <h3 className="text-blue font-bold text-lg">Primary Skills</h3>
           </div>
           <div className="space-y-2">
-            <div className="p-2 bg-surface-0/30 border border-surface-1/50">
+            <div className="p-2 bg-surface-0/30 border border-surface-1/50 text-sm">
               React (Next.js / Vite)
             </div>
-            <div className="p-2 bg-surface-0/30 border border-surface-1/50">
+            <div className="p-2 bg-surface-0/30 border border-surface-1/50 text-sm">
               TypeScript, JavaScript
             </div>
-            <div className="p-2 bg-surface-0/30 border border-surface-1/50">
+            <div className="p-2 bg-surface-0/30 border border-surface-1/50 text-sm">
               HTML, Tailwind, CSS, SCSS
             </div>
-            <div className="p-2 bg-surface-0/30 border border-surface-1/50">
+            <div className="p-2 bg-surface-0/30 border border-surface-1/50 text-sm">
               Payload, Sanity (CMS)
             </div>
-            <div className="p-2 bg-surface-0/30 border border-surface-1/50">
+            <div className="p-2 bg-surface-0/30 border border-surface-1/50 text-sm">
               Jest, Cypress, React Cosmos
             </div>
-            <div className="p-2 bg-surface-0/30 border border-surface-1/50">
+            <div className="p-2 bg-surface-0/30 border border-surface-1/50 text-sm">
               Express
             </div>
           </div>
