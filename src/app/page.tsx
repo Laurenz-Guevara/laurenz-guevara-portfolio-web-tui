@@ -112,17 +112,11 @@ Laurenz Guevara
       <div>
         <p className="text-lavender mb-1">$ ls projects</p>
         <div className="space-y-1 sm:space-y-0">
-          <p>
-            drwxr-xr-x 2 user staff Jan 15 2023{" "}
-            <span className="text-blue">
-              Twisty Moto - (Create, share and publish motorbike routes)
-            </span>
+          <p className="text-blue">
+            Twisty Moto - (Create, share and publish motorbike routes)
           </p>
-          <p>
-            drwxr-xr-x 2 user staff Mar 22 2023{" "}
-            <span className="text-blue">
-              Cliff Crafts - (E-commerce platform for climbing shoes)
-            </span>
+          <p className="text-blue">
+            Cliff Crafts - (E-commerce platform for climbing shoes)
           </p>
         </div>
       </div>
