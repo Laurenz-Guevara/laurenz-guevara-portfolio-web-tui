@@ -5,6 +5,7 @@ import React, { cache } from "react";
 import Link from "next/link";
 import { RenderBlogRichText } from "@/components/RenderBlogRichText";
 import BlogFooter from "@/components/BlogFooter";
+import BlogHeader from "@/components/BlogHeader";
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
@@ -52,10 +53,11 @@ export default async function Page({ params: paramsPromise }: Args) {
     );
   }
 
-  const { createdAt, content } = page;
+  const { createdAt, content, title } = page;
 
   return (
-    <article className="container mx-auto max-w-4xl py-10 px-4">
+    <article className="container mx-auto max-w-4xl pb-10 px-4">
+      <BlogHeader title={title} />
       <RenderBlogRichText data={content!} />
       <BlogFooter createdAt={createdAt!} />
     </article>
