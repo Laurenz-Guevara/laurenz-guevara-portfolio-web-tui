@@ -7,6 +7,8 @@
 }
 
 @theme {
+  --color-primary: #1f1e2e;
+
   --color-rosewater: #f5e0dc;
   --color-flamingo: #f2cdcd;
   --color-pink: #f5c2e7;
@@ -42,7 +44,7 @@
 @theme inline {
   --border-primary: var(--border-color);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --breakpoint-xs: 422px;
+  --breakpoint-xs: 440px;
   --breakpoint-logo: 971px;
   --breakpoint-sm2: 46rem;
 }
