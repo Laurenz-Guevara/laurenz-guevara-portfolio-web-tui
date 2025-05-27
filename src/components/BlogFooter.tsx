@@ -6,8 +6,10 @@ export default function BlogFooter({ createdAt }: { createdAt: string }) {
 
   return (
     <section className="flex justify-between">
-      <Link href="/blog">Back to blogs</Link>
-      <span className="text-right">
+      <Link className="text-lavender hover:text-maroon" href="/blog">
+        Back to blogs
+      </Link>
+      <span className="text-right text-green">
         Laurenz Guevara - Published on {formattedDate}
       </span>
     </section>
