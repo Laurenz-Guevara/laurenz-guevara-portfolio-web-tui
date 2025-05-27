@@ -6,6 +6,7 @@ import Link from "next/link";
 import { RenderBlogRichText } from "@/components/RenderBlogRichText";
 import BlogFooter from "@/components/BlogFooter";
 import BlogHeader from "@/components/BlogHeader";
+import { Tag } from "@/payload-types";
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
@@ -53,11 +54,11 @@ export default async function Page({ params: paramsPromise }: Args) {
     );
   }
 
-  const { createdAt, content, title } = page;
+  const { createdAt, content, title, tags } = page;
 
   return (
     <article className="container mx-auto max-w-4xl pb-4 sm:pb-10 px-4">
-      <BlogHeader title={title} />
+      <BlogHeader title={title} tags={tags as Tag[]} />
       <RenderBlogRichText data={content!} />
       <BlogFooter createdAt={createdAt!} />
     </article>
