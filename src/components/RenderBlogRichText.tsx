@@ -12,7 +12,7 @@ export const RenderBlogRichText = (
 
   return (
     <div
-      className="prose prose-invert mx-auto max-w-4xl"
+      className="prose prose-invert mx-auto max-w-full"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

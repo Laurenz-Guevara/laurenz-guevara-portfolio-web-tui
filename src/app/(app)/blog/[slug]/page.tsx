@@ -4,6 +4,7 @@ import React, { cache } from "react";
 
 import Link from "next/link";
 import { RenderBlogRichText } from "@/components/RenderBlogRichText";
+import BlogFooter from "@/components/BlogFooter";
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
@@ -38,11 +39,10 @@ type Args = {
 export default async function Page({ params: paramsPromise }: Args) {
   const { slug = "home" } = await paramsPromise;
 
-  let page: RequiredDataFromCollectionSlug<"blog-posts"> | null;
-
-  page = await queryPageBySlug({
-    slug,
-  });
+  const page: RequiredDataFromCollectionSlug<"blog-posts"> | null =
+    await queryPageBySlug({
+      slug,
+    });
 
   if (!page) {
     return (
@@ -55,9 +55,9 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { createdAt, content } = page;
 
   return (
-    <article className="container mx-auto">
+    <article className="container mx-auto max-w-4xl py-10 px-4">
       <RenderBlogRichText data={content!} />
-      <p>{createdAt}</p>
+      <BlogFooter createdAt={createdAt!} />
     </article>
   );
 }
