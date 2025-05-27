@@ -35,7 +35,6 @@ async function getBlogSlugs() {
 
 export default async function Blog() {
   const blogPosts = await getBlogSlugs();
-  console.log(blogPosts);
 
   return (
     <section className="p-4">
