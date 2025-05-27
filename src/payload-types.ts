@@ -159,6 +159,7 @@ export interface BlogPost {
   id: number;
   title?: string | null;
   slug?: string | null;
+  description?: string | null;
   content?: {
     root: {
       type: string;
@@ -278,6 +279,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface BlogPostsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  description?: T;
   content?: T;
   updatedAt?: T;
   createdAt?: T;
