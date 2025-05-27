@@ -38,7 +38,7 @@ export default function BlogHeader(
           );
         })}
       </div>
-      <div className="prose prose-invert mx-auto max-w-full">
+      <div className="prose prose-sm md:prose-base prose-invert mx-auto max-w-full">
         <h1>{title}</h1>
       </div>
     </>
