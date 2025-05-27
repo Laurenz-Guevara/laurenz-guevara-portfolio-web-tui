@@ -22,7 +22,7 @@ async function getBlogSlugs() {
 
   const params = pages.docs
     ?.filter((doc) => {
-      return doc.slug !== "home";
+      return doc.slug !== "blog";
     })
     .map(({ id, slug, title, description, createdAt }) => {
       return { id, slug, title, description, createdAt };
