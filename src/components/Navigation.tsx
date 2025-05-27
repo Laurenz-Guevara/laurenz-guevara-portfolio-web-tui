@@ -4,13 +4,20 @@ import SystemInfomation from "@/components/Header";
 export default function Navigation() {
   return (
     // TODO: Add mobile menu icon
-    <nav className="bg-surface-0/50 border-y border-surface-1 flex justify-between hidden xs:flex">
+    <nav className="bg-surface-0/50 border-y border-surface-1 justify-between hidden xs:flex">
       <div className="flex divide-x-2 divide-surface-1 border-surface-1 text-sm">
-        <Link className="py-2 px-4" href="/">Home</Link>
-        <Link className="py-2 px-4" href="/experience">Experience</Link>
-        <Link className="py-2 px-4" href="/skills">Skills</Link>
-        <Link className="py-2 px-4" href="/blog">Blog</Link>
-        <Link className="py-2 px-4 border-r border-surface-1" href="/contact">
+        <Link className="py-2 px-4 hover:text-maroon" href="/">Home</Link>
+        <Link className="py-2 px-4 hover:text-maroon" href="/experience">
+          Experience
+        </Link>
+        <Link className="py-2 px-4 hover:text-maroon" href="/skills">
+          Skills
+        </Link>
+        <Link className="py-2 px-4 hover:text-maroon" href="/blog">Blog</Link>
+        <Link
+          className="py-2 px-4 hover:text-maroon border-r border-surface-1"
+          href="/contact"
+        >
           Contact
         </Link>
       </div>

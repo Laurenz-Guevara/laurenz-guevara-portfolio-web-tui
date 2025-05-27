@@ -49,7 +49,7 @@ export default async function Blog() {
           return (
             <div key={post.id} className="space-y-6">
               <Link href={`blog/${post.slug}`}>
-                <div className="border border-surface-1 p-3 cursor-pointer hover:bg-surface-0/50">
+                <div className="border border-surface-1 p-3 cursor-pointer hover:bg-surface-0/50 hover:border-maroon">
                   <div className="flex justify-between mb-1">
                     <p className="text-sky">
                       {post.title}
