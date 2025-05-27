@@ -2,10 +2,33 @@
 
 import Link from "next/link";
 import SystemInfomation from "@/components/Header";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Navigation() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node)
+      ) {
+        setToggleMenu(false);
+      }
+    };
+
+    if (toggleMenu) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [toggleMenu]);
+
   return (
     <nav>
       <div className="fixed bottom-0 bg-primary xs:hidden w-full border-t border-surface-1">
@@ -18,21 +41,44 @@ export default function Navigation() {
           </button>
         </div>
         {toggleMenu && (
-          <div className="fixed bottom-0 right-0 z-50">
+          <div
+            className="fixed bottom-0 right-0 z-50"
+            ref={menuRef}
+          >
             <div className="flex flex-col divide-y-1 divide-surface-1 border-surface-1 border-l border-t text-sm bg-primary">
-              <Link className="py-2 px-4 hover:text-maroon" href="/">
+              <Link
+                onClick={() => setToggleMenu(false)}
+                className="py-2 px-4 hover:text-maroon"
+                href="/"
+              >
                 Home
               </Link>
-              <Link className="py-2 px-4 hover:text-maroon" href="/experience">
+              <Link
+                onClick={() => setToggleMenu(false)}
+                className="py-2 px-4 hover:text-maroon"
+                href="/experience"
+              >
                 Experience
               </Link>
-              <Link className="py-2 px-4 hover:text-maroon" href="/skills">
+              <Link
+                onClick={() => setToggleMenu(false)}
+                className="py-2 px-4 hover:text-maroon"
+                href="/skills"
+              >
                 Skills
               </Link>
-              <Link className="py-2 px-4 hover:text-maroon" href="/blog">
+              <Link
+                onClick={() => setToggleMenu(false)}
+                className="py-2 px-4 hover:text-maroon"
+                href="/blog"
+              >
                 Blog
               </Link>
-              <Link className="py-2 px-4 hover:text-maroon" href="/contact">
+              <Link
+                onClick={() => setToggleMenu(false)}
+                className="py-2 px-4 hover:text-maroon"
+                href="/contact"
+              >
                 Contact
               </Link>
               <button
