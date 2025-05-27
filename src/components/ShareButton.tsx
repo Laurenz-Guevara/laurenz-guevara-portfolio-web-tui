@@ -16,7 +16,7 @@ export default function ShareButton() {
     <button
       onClick={handleCopyLink}
       className={cn(
-        "text-maroon hover:text-green hover:cursor-pointer transition-colors",
+        "text-maroon hover:text-green hover:cursor-pointer transition-colors text-nowrap",
         copied && "text-green",
       )}
       title={copied ? "Link copied!" : "Copy link to clipboard"}

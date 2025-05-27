@@ -56,7 +56,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { createdAt, content, title } = page;
 
   return (
-    <article className="container mx-auto max-w-4xl pb-10 px-4">
+    <article className="container mx-auto max-w-4xl pb-4 sm:pb-10 px-4">
       <BlogHeader title={title} />
       <RenderBlogRichText data={content!} />
       <BlogFooter createdAt={createdAt!} />
