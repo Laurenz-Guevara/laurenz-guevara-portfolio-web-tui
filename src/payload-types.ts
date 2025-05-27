@@ -161,10 +161,11 @@ export interface Media {
  */
 export interface BlogPost {
   id: number;
-  title?: string | null;
-  slug?: string | null;
-  description?: string | null;
-  content?: {
+  title: string;
+  tags?: (number | Tag)[] | null;
+  slug: string;
+  description: string;
+  content: {
     root: {
       type: string;
       children: {
@@ -178,7 +179,7 @@ export interface BlogPost {
       version: number;
     };
     [k: string]: unknown;
-  } | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -188,7 +189,7 @@ export interface BlogPost {
  */
 export interface Tag {
   id: number;
-  'Tag Title': string;
+  tagTitle: string;
   colour: number | Colour;
   updatedAt: string;
   createdAt: string;
@@ -199,8 +200,8 @@ export interface Tag {
  */
 export interface Colour {
   id: number;
-  Colour: string;
-  'Hex Code': string;
+  colour: string;
+  hexCode: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -312,6 +313,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface BlogPostsSelect<T extends boolean = true> {
   title?: T;
+  tags?: T;
   slug?: T;
   description?: T;
   content?: T;
@@ -323,7 +325,7 @@ export interface BlogPostsSelect<T extends boolean = true> {
  * via the `definition` "tags_select".
  */
 export interface TagsSelect<T extends boolean = true> {
-  'Tag Title'?: T;
+  tagTitle?: T;
   colour?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -333,8 +335,8 @@ export interface TagsSelect<T extends boolean = true> {
  * via the `definition` "colours_select".
  */
 export interface ColoursSelect<T extends boolean = true> {
-  Colour?: T;
-  'Hex Code'?: T;
+  colour?: T;
+  hexCode?: T;
   updatedAt?: T;
   createdAt?: T;
 }

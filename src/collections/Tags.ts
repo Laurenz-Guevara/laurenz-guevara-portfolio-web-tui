@@ -4,14 +4,15 @@ export const Tags: CollectionConfig = {
   slug: "tags",
   admin: {
     group: "Tags",
-    useAsTitle: "Tag Title",
+    useAsTitle: "tagTitle",
   },
   access: {
     read: () => true,
   },
   fields: [
     {
-      name: "Tag Title",
+      name: "tagTitle",
+      label: "Tag Title",
       type: "text",
       required: true,
     },

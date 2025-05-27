@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getPayload } from "payload";
 import configPromise from "@payload-config";
 import { formatToDDMMYYYY } from "@/lib/utils";
+import { Tag } from "@/payload-types";
 
 async function getBlogSlugs() {
   const payload = await getPayload({ config: configPromise });
@@ -16,6 +17,7 @@ async function getBlogSlugs() {
       slug: true,
       title: true,
       description: true,
+      tags: true,
       createdAt: true,
     },
   });
@@ -24,8 +26,8 @@ async function getBlogSlugs() {
     ?.filter((doc) => {
       return doc.slug !== "blog";
     })
-    .map(({ id, slug, title, description, createdAt }) => {
-      return { id, slug, title, description, createdAt };
+    .map(({ id, slug, title, description, tags, createdAt }) => {
+      return { id, slug, title, description, tags, createdAt };
     });
 
   return params;
@@ -33,6 +35,7 @@ async function getBlogSlugs() {
 
 export default async function Blog() {
   const blogPosts = await getBlogSlugs();
+  console.log(blogPosts);
 
   return (
     <section className="p-4">
@@ -52,21 +55,30 @@ export default async function Blog() {
                     <p className="text-sky">
                       {post.title}
                     </p>
-                    <p>{formatToDDMMYYYY(post.createdAt)}</p>
+                    <p className="text-green">
+                      {formatToDDMMYYYY(post.createdAt)}
+                    </p>
                   </div>
                   <p className="mb-2">
                     {post.description}
                   </p>
                   <div className="flex gap-2 text-xs">
-                    <span className="bg-surface-0/70 px-2 py-1 rounded">
-                      Bubbletea
-                    </span>
-                    <span className="bg-surface-0/70 px-2 py-1 rounded">
-                      SSH
-                    </span>
-                    <span className="bg-surface-0/70 px-2 py-1 rounded">
-                      Golang
-                    </span>
+                    {(post.tags as Tag[])?.map((tag) => {
+                      const color =
+                        typeof tag.colour === "object" && tag.colour !== null
+                          ? tag.colour.hexCode
+                          : undefined;
+
+                      return (
+                        <span
+                          key={tag.id}
+                          className="px-2 py-1 rounded text-black"
+                          style={{ backgroundColor: color }}
+                        >
+                          {tag.tagTitle}
+                        </span>
+                      );
+                    })}
                   </div>
                 </div>
               </Link>

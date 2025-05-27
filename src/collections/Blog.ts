@@ -13,18 +13,28 @@ export const Blog: CollectionConfig = {
     {
       name: "title",
       type: "text",
+      required: true,
+    },
+    {
+      name: "tags",
+      type: "relationship",
+      relationTo: "tags",
+      hasMany: true,
     },
     {
       name: "slug",
       type: "text",
+      required: true,
     },
     {
       name: "description",
       type: "text",
+      required: true,
     },
     {
       name: "content",
       type: "richText",
+      required: true,
     },
   ],
 };
