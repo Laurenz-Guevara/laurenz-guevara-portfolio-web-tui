@@ -1,3 +1,5 @@
+export const revalidate = 3600;
+
 import configPromise from "@payload-config";
 import { getPayload, type RequiredDataFromCollectionSlug } from "payload";
 import React, { cache } from "react";

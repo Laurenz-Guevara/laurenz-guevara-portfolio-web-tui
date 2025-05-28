@@ -1,5 +1,6 @@
-import Link from "next/link";
+export const revalidate = 3600;
 
+import Link from "next/link";
 import { getPayload } from "payload";
 import configPromise from "@payload-config";
 import { formatToDDMMYYYY } from "@/lib/utils";
