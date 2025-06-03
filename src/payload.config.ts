@@ -1,3 +1,4 @@
+import { s3Storage } from "@payloadcms/storage-s3";
 import { vercelPostgresAdapter } from "@payloadcms/db-vercel-postgres";
 import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
@@ -22,7 +23,13 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Blog, Tags, Colours],
+  collections: [
+    Users,
+    Media,
+    Blog,
+    Tags,
+    Colours,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
@@ -36,5 +43,18 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
+    s3Storage({
+      collections: {
+        media: true,
+      },
+      bucket: process.env.S3_BUCKET!,
+      config: {
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY_ID!,
+          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY!,
+        },
+        region: process.env.S3_REGION,
+      },
+    }),
   ],
 });
