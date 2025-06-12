@@ -24,9 +24,6 @@ export async function generateStaticParams() {
   });
 
   const params = pages.docs
-    ?.filter((doc) => {
-      return doc.slug !== "home";
-    })
     .map(({ slug }) => {
       return { slug };
     });
@@ -66,15 +63,6 @@ export default async function Page({ params: paramsPromise }: Args) {
     </article>
   );
 }
-
-// TODO: Generate metadata based on content from page
-// export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
-//   const { slug = 'home' } = await paramsPromise
-//   const page = await queryPageBySlug({
-//     slug,
-//   })
-//   return generateMeta({ doc: page })
-// }
 
 const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
   const payload = await getPayload({ config: configPromise });
