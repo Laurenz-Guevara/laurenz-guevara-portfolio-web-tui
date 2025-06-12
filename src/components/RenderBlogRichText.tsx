@@ -1,19 +1,42 @@
-"use client";
+import {
+  DefaultNodeTypes,
+  type DefaultTypedEditorState,
+  SerializedBlockNode,
+} from "@payloadcms/richtext-lexical";
 
-import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
-import { convertLexicalToHTML } from "@payloadcms/richtext-lexical/html";
+import {
+  JSXConvertersFunction,
+  RichText as ConvertRichText,
+} from "@payloadcms/richtext-lexical/react";
 
-import React from "react";
+import { CodeBlock, CodeBlockProps } from "@/collections/blocks/Code/Component";
 
-export const RenderBlogRichText = (
-  { data }: { data: SerializedEditorState },
-) => {
-  const html = convertLexicalToHTML({ data });
+type NodeTypes =
+  | DefaultNodeTypes
+  | SerializedBlockNode<CodeBlockProps>;
 
+
+const jsxConverters: JSXConvertersFunction<NodeTypes> = (
+  { defaultConverters },
+) => ({
+  ...defaultConverters,
+  blocks: {
+    code: ({ node }) => <CodeBlock {...node.fields} />,
+  },
+});
+
+type Props = {
+  data: DefaultTypedEditorState;
+  enableGutter?: boolean;
+  enableProse?: boolean;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+export function RenderBlogRichText(props: Props) {
   return (
-    <div
+    <ConvertRichText
+      converters={jsxConverters}
       className="prose prose-sm md:prose-base prose-invert mx-auto max-w-full"
-      dangerouslySetInnerHTML={{ __html: html }}
+      {...props}
     />
   );
-};
+}
