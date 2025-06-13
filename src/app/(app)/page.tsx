@@ -115,8 +115,16 @@ Laurenz Guevara
           <p className="text-blue">
             Twisty Moto - (Create, share and publish motorbike routes)
           </p>
+          <p>
+            A route planning app for motorcyclists built with Next.js,
+            PostgreSQL, Drizzle ORM, and Tailwind CSS, deployed on Vercel.
+          </p>
           <p className="text-blue">
             Cliff Crafts - (E-commerce platform for climbing shoes)
+          </p>
+          <p>
+            Full Stack E-Commerce website built with React and Typescript.
+            Firebase cloud functions using Express.js and payments via stripe.
           </p>
         </div>
       </div>
