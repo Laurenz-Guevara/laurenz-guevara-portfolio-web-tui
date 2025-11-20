@@ -51,7 +51,7 @@ Laurenz Guevara
               <span className="sm:col-span-3 text-teal font-bold w-40">
                 Distro / OS:
               </span>
-              <span className="sm:col-span-9">Arch Linux / Windows</span>
+              <span className="sm:col-span-9">Omarchy / Windows</span>
               <span className="sm:col-span-3 text-mauve font-bold w-40">
                 Languages:
               </span>
