@@ -8,7 +8,7 @@ export default function Experience() {
       <div className="mb-6">
         <p className="text-yellow mb-2">WORK EXPERIENCE</p>
         <p className="text-lavender mb-1">
-          $ curl -X GET{" "}
+          $ curl{" "}
           <Link
             className="text-blue"
             href="https://api.laurenzguevara.com/experience"
