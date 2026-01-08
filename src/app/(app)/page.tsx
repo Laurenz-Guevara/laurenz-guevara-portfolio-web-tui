@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <section className="p-4">
@@ -112,16 +114,24 @@ Laurenz Guevara
       <div>
         <p className="text-lavender mb-1">$ ls projects</p>
         <div className="space-y-1 sm:space-y-0">
-          <p className="text-blue">
+          <Link
+            className="text-blue hover:text-maroon"
+            href="https://twisty-moto.vercel.app/"
+            target="_blank"
+          >
             Twisty Moto - (Create, share and publish motorbike routes)
-          </p>
+          </Link>
           <p>
             A route planning app for motorcyclists built with Next.js,
             PostgreSQL, Drizzle ORM, and Tailwind CSS, deployed on Vercel.
           </p>
-          <p className="text-blue">
+          <Link
+            className="text-blue hover:text-maroon"
+            href="https://github.com/Laurenz-Guevara/cliff-crafts"
+            target="_blank"
+          >
             Cliff Crafts - (E-commerce platform for climbing shoes)
-          </p>
+          </Link>
           <p>
             Full Stack E-Commerce website built with React and Typescript.
             Firebase cloud functions using Express.js and payments via stripe.
