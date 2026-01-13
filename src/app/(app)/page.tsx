@@ -69,9 +69,9 @@ Laurenz Guevara
             </div>
 
             <div className="mt-2.5 pt-2.5 border-t border-surface-1">
-              <div className="flex">
-                <span className="text-mauve font-bold w-40">Colours:</span>
-                <div className="flex-1">
+              <div className="grid grid-cols-1 sm:grid-cols-12 space-y-2">
+                <span className="text-mauve sm:col-span-3 font-bold w-40">Colours:</span>
+                <div className="sm:col-span-9">
                   <div className="flex gap-1 mb-1">
                     <span className="bg-red w-3 h-3 rounded"></span>
                     <span className="bg-peach w-3 h-3 rounded"></span>
