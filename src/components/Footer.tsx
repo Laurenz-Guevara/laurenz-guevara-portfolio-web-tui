@@ -6,7 +6,7 @@ export default function Footer() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputCommand, setInputCommand] = useState("");
   const [currentCommand, setCurrentCommand] = useState(
-    "ssh tui-resume.laurenzguevara.com",
+    "ssh portfolio.laurenzguevara.com",
   );
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

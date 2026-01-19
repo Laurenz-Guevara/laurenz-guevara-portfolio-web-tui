@@ -45,7 +45,7 @@ export default function Contact() {
 
       <div className="mb-6">
         <p className="text-lavender mb-2">
-          $ ssh contact.laurenzguevara.com
+          $ nvim contact/message.txt
         </p>
         <div className="border border-surface-1 p-4">
           <p className="mb-4">
