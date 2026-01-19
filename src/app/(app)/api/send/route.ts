@@ -12,13 +12,13 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(request: Request) {
   try {
-    const { text } = await request.json();
+    const { name, email, message } = await request.json();
 
     const info = await transporter.sendMail({
       from: "contact@laurenzguevara.com",
       to: process.env.SMTP_RECIEVER,
       subject: "Portoflio - A new message has been left",
-      text,
+      text: `Name: ${name}, Email: ${email}, Message: ${message}`,
     });
 
     return new Response(JSON.stringify({

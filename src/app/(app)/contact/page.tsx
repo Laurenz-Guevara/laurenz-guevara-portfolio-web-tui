@@ -1,33 +1,67 @@
 "use client"
 
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+
 import Link from "next/link";
 
 export default function Contact() {
-  async function sendMail() {
+  const [rateLimitClient, setRateLimitClient] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+
+  type FormData = {
+    name: string;
+    email: string;
+    message: string;
+  };
+
+  const schema = z.object({
+    name: z.string().min(1).max(64),
+    email: z.email().min(1).max(64),
+    message: z.string().min(1).max(200),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitSuccessful },
+  } = useForm<FormData>({ resolver: zodResolver(schema) });
+
+  async function submitForm(formData: FormData) {
+    setIsSending(true);
+    setRateLimitClient(true);
+
     try {
       const response = await fetch("/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           to: process.env.SMTP_RECIEVER,
-          text: "Lorem Ipsum",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
         }),
       });
 
       if (!response.ok) {
         const errorText = await response.text();
         console.error("Error sending email:", errorText);
-        alert("Failed to send email.");
+        setIsSending(false)
         return;
       }
 
       const data = await response.json();
       console.log("Email sent:", data);
-      alert("Email sent successfully!");
     } catch (err) {
+      // TODO: ADD TOAST
       console.error("Fetch error:", err);
-      alert("Error sending email.");
     }
+
+    setTimeout(function () {
+      setRateLimitClient(false);
+    }, 3000);
   }
 
 
@@ -72,7 +106,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
-      <div className="mb-6">
+      <form className="mb-6" onSubmit={handleSubmit(submitForm)}>
         <p className="text-lavender mb-2">
           $ nvim contact/message.txt
         </p>
@@ -87,6 +121,7 @@ export default function Contact() {
                 type="text"
                 className="w-full border border-surface-1 p-2 focus:outline-none focus:border-mauve"
                 placeholder="Enter your name"
+                {...register("name")}
               />
             </div>
             <div>
@@ -95,6 +130,7 @@ export default function Contact() {
                 type="email"
                 className="w-full border border-surface-1 p-2 focus:outline-none focus:border-mauve"
                 placeholder="Enter your email"
+                {...register("email")}
               />
             </div>
             <div>
@@ -102,19 +138,24 @@ export default function Contact() {
               <textarea
                 className="w-full border border-surface-1 p-2 h-32 focus:outline-none focus:border-mauve"
                 placeholder="Type your message here..."
+                {...register("message")}
               >
               </textarea>
             </div>
+            {isSubmitSuccessful && rateLimitClient && (
+              <div className="text-green">
+                <p>Your message has been sent sucessfully</p>
+              </div>
+            )}
             <button
-              disabled={false}
+              disabled={isSending || rateLimitClient}
               className="bg-surface-0/70 hover:bg-surface-1 text-green px-4 py-2 border border-surface-1 hover:cursor-pointer"
-              onClick={() => sendMail()}
             >
               Send Message
             </button>
           </div>
         </div>
-      </div>
+      </form>
     </section>
   );
 }
