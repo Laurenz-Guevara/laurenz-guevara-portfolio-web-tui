@@ -1,6 +1,36 @@
+"use client"
+
 import Link from "next/link";
 
 export default function Contact() {
+  async function sendMail() {
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: process.env.SMTP_RECIEVER,
+          text: "Lorem Ipsum",
+        }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Error sending email:", errorText);
+        alert("Failed to send email.");
+        return;
+      }
+
+      const data = await response.json();
+      console.log("Email sent:", data);
+      alert("Email sent successfully!");
+    } catch (err) {
+      console.error("Fetch error:", err);
+      alert("Error sending email.");
+    }
+  }
+
+
   return (
     <section className="p-4">
       <div className="mb-6">
@@ -42,7 +72,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-
       <div className="mb-6">
         <p className="text-lavender mb-2">
           $ nvim contact/message.txt
@@ -77,8 +106,9 @@ export default function Contact() {
               </textarea>
             </div>
             <button
-              disabled={true}
+              disabled={false}
               className="bg-surface-0/70 hover:bg-surface-1 text-green px-4 py-2 border border-surface-1 hover:cursor-pointer"
+              onClick={() => sendMail()}
             >
               Send Message
             </button>
