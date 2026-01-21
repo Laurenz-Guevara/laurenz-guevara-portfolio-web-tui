@@ -14,31 +14,20 @@ export async function POST(request: Request) {
   try {
     const { name, email, message } = await request.json();
 
-    const info = await transporter.sendMail({
-      from: "contact@laurenzguevara.com",
+    await transporter.sendMail({
+      from: "Laurenz Guevara Portfolio <contact@laurenzguevara.com>",
       to: process.env.SMTP_RECIEVER,
-      subject: "Portoflio - A new message has been left",
+      subject: `Portoflio - A new message has been left by ${name}`,
       text: `Name: ${name}, Email: ${email}, Message: ${message}`,
     });
 
     return new Response(JSON.stringify({
       message: "Email sent successfully",
-      envelope: info.envelope,
-      messageId: info.messageId,
     }), { status: 200 });
   } catch (err: unknown) {
-    console.error(err);
-
-    let errorMessage = "Failed to send email";
-
-    if (err instanceof Error) {
-      errorMessage = err.message;
-    } else if (typeof err === 'string') {
-      errorMessage = err;
-    }
-
+    console.log(err)
     return new Response(
-      JSON.stringify({ error: errorMessage }),
+      JSON.stringify({ error: "Failed to send email" }),
       { status: 500 }
     );
   }
