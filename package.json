@@ -11,7 +11,6 @@
     "generate:types": "PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types"
   },
   "dependencies": {
-    "@aws-sdk/client-sesv2": "^3.971.0",
     "@hookform/resolvers": "^5.2.2",
     "@payloadcms/db-vercel-postgres": "^3.40.0",
     "@payloadcms/next": "^3.40.0",
