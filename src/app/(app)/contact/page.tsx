@@ -7,9 +7,16 @@ import { useState } from "react";
 
 import Link from "next/link";
 
+enum Dispatch {
+  Sending = "Sending",
+  Success = "Success",
+  Failed = "Failed",
+  Waiting = "Waiting"
+}
+
 export default function Contact() {
   const [rateLimitClient, setRateLimitClient] = useState(false);
-  const [isSending, setIsSending] = useState(false);
+  const [dispatchStage, setDispatchStage] = useState<Dispatch>(Dispatch.Waiting)
 
   type FormData = {
     name: string;
@@ -18,19 +25,19 @@ export default function Contact() {
   };
 
   const schema = z.object({
-    name: z.string().min(1).max(64),
-    email: z.email().min(1).max(64),
-    message: z.string().min(1).max(200),
+    name: z.string().min(1, { message: "You must enter a name." }).max(64, { message: "Name cannot be longer than 32 characters." }),
+    email: z.email({ message: "Please enter a valid email address." }).min(1, { message: "Email must be longer than 1 character." }).max(64, { message: "Name cannot be longer than 32 characters." }),
+    message: z.string().min(1, { message: "You must enter a message." }).max(64, { message: "Message cannot be longer than 32 characters." }),
   });
 
   const {
     register,
     handleSubmit,
-    formState: { isSubmitSuccessful },
+    formState: { isSubmitSuccessful: formConditionsMet, errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   async function submitForm(formData: FormData) {
-    setIsSending(true);
+    setDispatchStage(Dispatch.Sending);
     setRateLimitClient(true);
 
     try {
@@ -46,24 +53,20 @@ export default function Contact() {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Error sending email:", errorText);
-        setIsSending(false)
+        setDispatchStage(Dispatch.Failed)
         return;
       }
 
-      const data = await response.json();
-      console.log("Email sent:", data);
-    } catch (err) {
-      // TODO: ADD TOAST
-      console.error("Fetch error:", err);
+      setDispatchStage(Dispatch.Success)
+    } catch {
+      setDispatchStage(Dispatch.Failed)
+    } finally {
+      setTimeout(function () {
+        setRateLimitClient(false);
+        setDispatchStage(Dispatch.Waiting)
+      }, 3000);
     }
-
-    setTimeout(function () {
-      setRateLimitClient(false);
-    }, 3000);
   }
-
 
   return (
     <section className="p-4">
@@ -123,6 +126,11 @@ export default function Contact() {
                 placeholder="Enter your name"
                 {...register("name")}
               />
+              {errors.name && (
+                <div className="text-red pt-2">
+                  <p>{errors.name.message}</p>
+                </div>
+              )}
             </div>
             <div>
               <p className="text-blue mb-1">Email:</p>
@@ -132,6 +140,11 @@ export default function Contact() {
                 placeholder="Enter your email"
                 {...register("email")}
               />
+              {errors.email && (
+                <div className="text-red pt-2">
+                  <p>{errors.email.message}</p>
+                </div>
+              )}
             </div>
             <div>
               <p className="text-blue mb-1">Message:</p>
@@ -139,20 +152,31 @@ export default function Contact() {
                 className="w-full border border-surface-1 p-2 h-32 focus:outline-none focus:border-mauve"
                 placeholder="Type your message here..."
                 {...register("message")}
-              >
-              </textarea>
+              />
+              {errors.message && (
+                <div className="text-red pt-2">
+                  <p>{errors.message.message}</p>
+                </div>
+              )}
             </div>
-            {isSubmitSuccessful && rateLimitClient && (
-              <div className="text-green">
-                <p>Your message has been sent sucessfully</p>
-              </div>
-            )}
-            <button
-              disabled={isSending || rateLimitClient}
-              className="bg-surface-0/70 hover:bg-surface-1 text-green px-4 py-2 border border-surface-1 hover:cursor-pointer"
-            >
-              Send Message
-            </button>
+            <div className="flex items-center">
+              <button
+                disabled={dispatchStage == Dispatch.Sending || rateLimitClient}
+                className="bg-surface-0/70 hover:bg-surface-1 text-green px-4 py-2 border border-surface-1 hover:cursor-pointer disabled:cursor-default disabled:opacity-50"
+              >
+                Send Message
+              </button>
+              {formConditionsMet && rateLimitClient && dispatchStage !== Dispatch.Failed && (
+                <div className="text-green pl-4">
+                  <p>Your message has been sent sucessfully</p>
+                </div>
+              )}
+              {dispatchStage === Dispatch.Failed && (
+                <div className="text-red pl-4">
+                  <p>Your message has not been sent sucessfully</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </form>
