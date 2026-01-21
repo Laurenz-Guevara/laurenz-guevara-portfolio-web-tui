@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 enum Dispatch {
   Sending = "Sending",
@@ -27,14 +28,16 @@ export default function Contact() {
   const schema = z.object({
     name: z.string().min(1, { message: "You must enter a name." }).max(64, { message: "Name cannot be longer than 32 characters." }),
     email: z.email({ message: "Please enter a valid email address." }).min(1, { message: "Email must be longer than 1 character." }).max(64, { message: "Name cannot be longer than 32 characters." }),
-    message: z.string().min(1, { message: "You must enter a message." }).max(64, { message: "Message cannot be longer than 32 characters." }),
+    message: z.string().min(1, { message: "You must enter a message." }).max(300, { message: "Message cannot be longer than 300 characters." }),
   });
 
   const {
     register,
     handleSubmit,
+    watch,
     formState: { isSubmitSuccessful: formConditionsMet, errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
+  const messageValue = watch("message") || "";
 
   async function submitForm(formData: FormData) {
     setDispatchStage(Dispatch.Sending);
@@ -153,11 +156,16 @@ export default function Contact() {
                 placeholder="Type your message here..."
                 {...register("message")}
               />
-              {errors.message && (
-                <div className="text-red pt-2">
-                  <p>{errors.message.message}</p>
+              <div className="flex justify-between">
+                <div className="text-red">
+                  {errors.message && (
+                    <p>{errors.message.message}</p>
+                  )}
                 </div>
-              )}
+                <div className="text-sm text-right">
+                  <span className={cn(messageValue.length > 300 && "text-red")}>{messageValue.length}</span>/300
+                </div>
+              </div>
             </div>
             <div className="flex items-center">
               <button
