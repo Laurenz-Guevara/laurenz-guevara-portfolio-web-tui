@@ -113,7 +113,7 @@ Laurenz Guevara
 
       <div>
         <p className="text-lavender mb-1">$ ls projects</p>
-        <div className="space-y-1 sm:space-y-0">
+        <div className="space-y-1">
           <Link
             className="text-blue hover:text-maroon"
             href="https://twisty-moto.vercel.app/"
@@ -135,6 +135,19 @@ Laurenz Guevara
           <p>
             Full Stack E-Commerce website built with React and Typescript.
             Firebase cloud functions using Express.js and payments via stripe.
+          </p>
+          <Link
+            className="text-blue hover:text-maroon"
+            href="https://github.com/Laurenz-Guevara/cliff-crafts"
+            target="_blank"
+          >
+            Portfolio (SSH)
+          </Link>
+          <p>
+            SSH app built using Golang, Bubble Tea and Wish. View this page but in the terminal by running&nbsp;
+            <span className="text-green select-all cursor-text">
+              ssh portfolio.laurenzguevara.com
+            </span>
           </p>
         </div>
       </div>
