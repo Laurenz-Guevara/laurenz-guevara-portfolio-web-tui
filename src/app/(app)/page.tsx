@@ -147,7 +147,7 @@ Laurenz Guevara
             SSH app built using Golang, Bubble Tea and Wish. View this page but in the terminal by running&nbsp;
             <span className="text-green select-all cursor-text">
               ssh portfolio.laurenzguevara.com
-            </span>
+            </span>.
           </p>
         </div>
       </div>
