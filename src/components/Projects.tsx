@@ -6,7 +6,7 @@ export default function ProjectBlock() {
     <section className="space-y-4">
       {projects.map((project) => {
         return (
-          <div key={project.projectId} className="border border-surface-1 p-4 bg-[#313244]/30">
+          <div key={project.projectId} className="border border-surface-1 p-4 bg-surface-0/30">
             <div className="space-y-1 flex flex-wrap justify-between">
               <div className="space-x-2 mr-2">
                 <span className="text-blue">{project.title}</span>
