@@ -28,7 +28,7 @@ export default function Contact() {
   const schema = z.object({
     name: z.string().min(1, { message: "You must enter a name." }).max(64, { message: "Name cannot be longer than 32 characters." }),
     email: z.email({ message: "Please enter a valid email address." }).min(1, { message: "Email must be longer than 1 character." }).max(64, { message: "Name cannot be longer than 32 characters." }),
-    message: z.string().min(1, { message: "You must enter a message." }).max(300, { message: "Message cannot be longer than 300 characters." }),
+    message: z.string().min(1, { message: "You must enter a message." }).max(1000, { message: "Message cannot be longer than 1000 characters." }),
   });
 
   const {
@@ -162,7 +162,7 @@ export default function Contact() {
                   )}
                 </div>
                 <div className="text-sm text-right">
-                  <span className={cn(messageValue.length > 300 && "text-red")}>{messageValue.length}</span>/300
+                  <span className={cn(messageValue.length > 1000 && "text-red")}>{messageValue.length}</span>/1000
                 </div>
               </div>
             </div>
