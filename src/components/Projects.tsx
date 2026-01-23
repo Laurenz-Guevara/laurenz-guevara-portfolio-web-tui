@@ -164,7 +164,7 @@ const projects = [
     projectId: 3,
     title: "Portfolio SSH",
     url: "https://github.com/Laurenz-Guevara/laurenz-guevara-portfolio-web-tui",
-    description: "SSH app built using Golang, Bubble Tea and Wish. View this page but in the terminal by running ssh portfolio.laurenzguevara.com.",
+    description: "SSH app built using Golang, Bubble Tea and Wish. View this page but in the terminal by running `ssh portfolio.laurenzguevara.com`.",
     tags: [
       {
         title: "Golang",
