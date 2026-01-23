@@ -11,9 +11,15 @@ export default function ProjectBlock() {
               <div className="space-x-2 mr-2">
                 <span className="text-blue">{project.title}</span>
                 <span>-</span>
-                <Link className="text-green" target="_blank" href={project.url}>{project.url}</Link>
+                {!project.terminal ? (
+                  <span className="text-green">{project.url}</span>
+                ) : (
+                  <>
+                    <span className="text-green">$</span><span className="text-green select-all">{project.terminal}</span>
+                  </>
+                )}
               </div>
-              <div className="flex flex-wrap gap-2 text-xs h-min">
+              <div className="flex flex-wrap gap-2 gap-y-3.5 text-xs h-min">
                 {(project.tags).map((tag) => {
                   return (
                     <Link key={tag.title} href={tag.url} target="_blank">
@@ -164,6 +170,7 @@ const projects = [
     projectId: 3,
     title: "Portfolio SSH",
     url: "https://github.com/Laurenz-Guevara/laurenz-guevara-portfolio-web-tui",
+    terminal: "ssh portfolio.laurenzguevara.com",
     description: "SSH app built using Golang, Bubble Tea and Wish. View this page but in the terminal by running `ssh portfolio.laurenzguevara.com`.",
     tags: [
       {
@@ -189,6 +196,12 @@ const projects = [
         colour: "#A872EE",
         textColour: "#ffffff",
         url: "https://fly.io"
+      },
+      {
+        title: "AWS SES",
+        colour: "#4151D2",
+        textColour: "#ffffff",
+        url: "https://aws.amazon.com/ses/"
       },
     ],
     images: [
