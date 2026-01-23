@@ -1,4 +1,6 @@
 import nodemailer from "nodemailer";
+import { render } from '@react-email/components';
+import ContactEmailTemplate from "@/email-templates/ContactEmailTemplate"
 
 const transporter = nodemailer.createTransport({
   host: "email-smtp.eu-west-2.amazonaws.com",
@@ -12,13 +14,21 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    const { name, email, message }: {
+      name: string;
+      email: string;
+      message: string;
+    } = await request.json();
+
+    const emailHtml = await render(
+      <ContactEmailTemplate name={name} email={email} message={message} />
+    );
 
     await transporter.sendMail({
       from: "Laurenz Guevara Portfolio <contact@laurenzguevara.com>",
       to: process.env.SMTP_RECIEVER,
       subject: `Portoflio - A new message has been left by ${name}`,
-      text: `Name: ${name}, Email: ${email}, Message: ${message}`,
+      html: emailHtml
     });
 
     return new Response(JSON.stringify({
