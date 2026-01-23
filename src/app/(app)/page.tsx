@@ -1,11 +1,11 @@
-import Link from "next/link";
+import ProjectBlock from "@/components/Projects";
 
 export default function Home() {
   return (
     <section className="p-4">
       <div className="mb-6">
         <p className="text-lavender mb-1">$ fastfetch</p>
-        <div className="flex flex-wrap space-y-4 logo:space-y-0 space-x-10">
+        <div className="flex flex-wrap space-y-4 logo:space-y-0 space-x-10 mb-3">
           <div className="flex items-center justify-center mx-auto logo:mx-0 md:px-10">
             <pre className="text-mauve text-sm">{`
 ██╗      ██████╗
@@ -19,7 +19,6 @@ Laurenz Guevara
 `}
             </pre>
           </div>
-
           <div className="space-y-2 w-full logo:w-fit">
             <div className="grid grid-cols-1 sm:grid-cols-12 space-y-2">
               <span className="sm:col-span-3 text-peach font-bold w-40">
@@ -90,7 +89,7 @@ Laurenz Guevara
             </div>
           </div>
         </div>
-        <div className="space-y-2">
+        <div className="space-y-6">
           <div>
             <p className="text-lavender mb-1">$ whoami</p>
             <p>
@@ -108,47 +107,8 @@ Laurenz Guevara
               discussions, and technical demos.
             </p>
           </div>
-        </div>
-      </div>
-
-      <div>
-        <p className="text-lavender mb-1">$ ls projects</p>
-        <div className="space-y-1">
-          <Link
-            className="text-blue hover:text-maroon"
-            href="https://twisty-moto.vercel.app/"
-            target="_blank"
-          >
-            Twisty Moto - (Create, share and publish motorbike routes)
-          </Link>
-          <p>
-            A route planning app for motorcyclists built with Next.js,
-            PostgreSQL, Drizzle ORM, and Tailwind CSS, deployed on Vercel.
-          </p>
-          <Link
-            className="text-blue hover:text-maroon"
-            href="https://github.com/Laurenz-Guevara/cliff-crafts"
-            target="_blank"
-          >
-            Cliff Crafts - (E-commerce platform for climbing shoes)
-          </Link>
-          <p>
-            Full Stack E-Commerce website built with React and Typescript.
-            Firebase cloud functions using Express.js and payments via stripe.
-          </p>
-          <Link
-            className="text-blue hover:text-maroon"
-            href="https://github.com/Laurenz-Guevara/cliff-crafts"
-            target="_blank"
-          >
-            Portfolio (SSH)
-          </Link>
-          <p>
-            SSH app built using Golang, Bubble Tea and Wish. View this page but in the terminal by running&nbsp;
-            <span className="text-green select-all cursor-text">
-              ssh portfolio.laurenzguevara.com
-            </span>.
-          </p>
+          <p className="text-lavender mb-1">$ ls projects</p>
+          <ProjectBlock />
         </div>
       </div>
     </section>
