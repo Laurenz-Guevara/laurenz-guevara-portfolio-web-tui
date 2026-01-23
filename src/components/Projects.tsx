@@ -194,7 +194,7 @@ const projects = [
     images: [
       { id: 1, url: "https://laurenz-guevara-portfolio-web-tui.s3.eu-west-2.amazonaws.com/assets/ssh-tui-home.png", alt: "SSH Portfolio Homepage" },
       { id: 2, url: "https://laurenz-guevara-portfolio-web-tui.s3.eu-west-2.amazonaws.com/assets/ssh-tui-experience.png", alt: "SSH Portfolio Experience Page" },
-      { id: 3, url: "https://laurenz-guevara-portfolio-web-tui.s3.eu-west-2.amazonaws.com/assets/ssh-contact.png", alt: "SSH Portfolio Contact Page" },
+      { id: 3, url: "https://laurenz-guevara-portfolio-web-tui.s3.eu-west-2.amazonaws.com/assets/ssh-tui-contact.png", alt: "SSH Portfolio Contact Page" },
     ]
   },
 ]
