@@ -79,7 +79,6 @@ export default function Contact() {
           $ cat resume/contact.txt
         </p>
       </div>
-
       <div className="border border-surface-1 p-4 mb-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
