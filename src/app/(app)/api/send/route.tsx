@@ -3,7 +3,7 @@ import { render } from '@react-email/components';
 import ContactEmailTemplate from "@/email-templates/ContactEmailTemplate"
 
 const transporter = nodemailer.createTransport({
-  host: "email-smtp.eu-west-2.amazonaws.com",
+  host: process.env.SMTP_HOST,
   port: 587,
   secure: false,
   auth: {
