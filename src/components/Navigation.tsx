@@ -63,13 +63,6 @@ export default function Navigation() {
               <Link
                 onClick={() => setToggleMenu(false)}
                 className="py-2 px-4 hover:text-maroon"
-                href="/skills"
-              >
-                Skills
-              </Link>
-              <Link
-                onClick={() => setToggleMenu(false)}
-                className="py-2 px-4 hover:text-maroon"
                 href="/blog"
               >
                 Blog
@@ -97,9 +90,6 @@ export default function Navigation() {
           <Link className="py-2 px-4 hover:text-maroon" href="/">Home</Link>
           <Link className="py-2 px-4 hover:text-maroon" href="/experience">
             Experience
-          </Link>
-          <Link className="py-2 px-4 hover:text-maroon" href="/skills">
-            Skills
           </Link>
           <Link className="py-2 px-4 hover:text-maroon" href="/blog">Blog</Link>
           <Link
