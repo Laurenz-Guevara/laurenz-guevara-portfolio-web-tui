@@ -48,7 +48,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="whitespace-nowrap">
-          <span>v1.0.0 | Laurenz Guevara | © 2026</span>
+          <span>v1.0.0 | Laurenz Guevara | 2026</span>
         </div>
       </div>
     </footer>
