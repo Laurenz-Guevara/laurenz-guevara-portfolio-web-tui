@@ -1,6 +1,7 @@
 "use client";
 
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
+import ExperienceSkeleton from "./ExperienceSkeleton";
 
 interface Experience {
   company: string;
@@ -12,7 +13,7 @@ interface Experience {
 }
 
 export default function WorkExperience() {
-  const { data: workExperience } = useSuspenseQuery({
+  const { data: workExperience } = useQuery({
     queryKey: ["experience"],
     staleTime: 1000 * 60 * 30,
     queryFn: async (): Promise<Experience[]> => {
@@ -23,7 +24,7 @@ export default function WorkExperience() {
 
   return (
     <>
-      {workExperience.map((experience) => {
+      {workExperience ? workExperience.map((experience) => {
         return (
           <div
             key={experience.company}
@@ -48,7 +49,9 @@ export default function WorkExperience() {
             </p>
           </div>
         );
-      })}
+      })
+        : <ExperienceSkeleton />
+      }
     </>
   );
 }
