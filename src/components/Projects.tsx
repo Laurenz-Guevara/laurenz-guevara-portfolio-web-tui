@@ -125,6 +125,37 @@ const projects = [
   },
   {
     projectId: 2,
+    title: "Refold Studio",
+    url: "https://refoldstudio.co.uk",
+    description: "A one-person agency that offers and promotes website services to local businesses in the community.",
+    tags: [
+      {
+        title: "Next.js",
+        colour: "#010102",
+        textColour: "#ffffff",
+        url: "http://nextjs.org"
+      },
+      {
+        title: "Tailwind",
+        colour: "#03B7F9",
+        textColour: "#ffffff",
+        url: "https://tailwindcss.com"
+      },
+      {
+        title: "AWS SES",
+        colour: "#4151D2",
+        textColour: "#ffffff",
+        url: "https://aws.amazon.com/ses/"
+      },
+    ],
+    images: [
+      { id: 1, url: "https://laurenz-guevara-portfolio-web-tui.s3.eu-west-2.amazonaws.com/assets/refold-splash.png", alt: "Refold Home Page" },
+      { id: 2, url: "https://laurenz-guevara-portfolio-web-tui.s3.eu-west-2.amazonaws.com/assets/refold-faq.png", alt: "Frequently Asked Questions Page" },
+      { id: 3, url: "https://laurenz-guevara-portfolio-web-tui.s3.eu-west-2.amazonaws.com/assets/refold-contact.png", alt: "Contact Form Page" },
+    ]
+  },
+  {
+    projectId: 3,
     title: "Cliffcrafts",
     url: "https://github.com/Laurenz-Guevara/cliff-crafts",
     description: "Full Stack E-Commerce website built with React and Typescript. Firebase cloud functions using Express.js to provide API Requests with stripe.",
@@ -167,7 +198,32 @@ const projects = [
     ]
   },
   {
-    projectId: 3,
+    projectId: 5,
+    title: "The Little Coffee Bike",
+    url: "http://thelittlecoffeebike.co.uk",
+    description: "Built for a local business on the Isle of Wight serving coffee on a bike. Full design, build and hosting.",
+    tags: [
+      {
+        title: "Next.js",
+        colour: "#010102",
+        textColour: "#ffffff",
+        url: "http://nextjs.org"
+      },
+      {
+        title: "Tailwind",
+        colour: "#03B7F9",
+        textColour: "#ffffff",
+        url: "https://tailwindcss.com"
+      },
+    ],
+    images: [
+      { id: 1, url: "https://laurenz-guevara-portfolio-web-tui.s3.eu-west-2.amazonaws.com/assets/ltcb-splash.png", alt: "The Little Coffee Bike Home Hero" },
+      { id: 2, url: "https://laurenz-guevara-portfolio-web-tui.s3.eu-west-2.amazonaws.com/assets/tlcb-our-menu.png", alt: "The Little Coffee Bike Our Menu" },
+      { id: 3, url: "https://laurenz-guevara-portfolio-web-tui.s3.eu-west-2.amazonaws.com/assets/tlcb-contact-us.png", alt: "The Little Coffee Bike Find Us" },
+    ]
+  },
+  {
+    projectId: 6,
     title: "Portfolio SSH",
     url: "https://github.com/Laurenz-Guevara/laurenz-guevara-portfolio-web-tui",
     terminal: "ssh portfolio.laurenzguevara.com",
