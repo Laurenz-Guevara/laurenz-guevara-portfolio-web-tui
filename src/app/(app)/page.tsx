@@ -31,7 +31,7 @@ Laurenz Guevara
                 Location:
               </span>
               <span className="sm:col-span-9">
-                United Kingdom (British National)
+                United Kingdom (Citizen)
               </span>
               <span className="sm:col-span-3 text-green font-bold w-40">
                 Experience:
