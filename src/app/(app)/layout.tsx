@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import TanstackProvider from "@/components/TanstackProvider";
+import RecaptchaProvider from '@/components/google-recaptcha-v3-provider/RecaptchaProvider'
 
 export const metadata: Metadata = {
   title: "Laurenz Guevara",
@@ -18,15 +19,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <TanstackProvider>
-          <main className="min-h-screen flex flex-col mb-[37px] xs:mb-0">
-            <div className="flex-1 flex flex-col">
-              <Navigation />
-              {children}
-            </div>
-            <Footer />
-          </main>
-        </TanstackProvider>
+        <RecaptchaProvider>
+          <TanstackProvider>
+            <main className="min-h-screen flex flex-col mb-[37px] xs:mb-0">
+              <div className="flex-1 flex flex-col">
+                <Navigation />
+                {children}
+              </div>
+              <Footer />
+            </main>
+          </TanstackProvider>
+        </RecaptchaProvider>
       </body>
     </html>
   );

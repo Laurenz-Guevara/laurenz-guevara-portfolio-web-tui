@@ -12,13 +12,32 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+async function verifyCaptcha(token: string): Promise<boolean> {
+  const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `secret=${process.env.CAPTCHA_SECRET_KEY}&response=${token}`,
+  })
+
+  const data = await res.json()
+  if (!data.success || data.score < 0.5) {
+    console.log("Not Data Success or Score above / equal to  0.5 during captcha check", data)
+  }
+  return data.success && data.score >= 0.5
+}
+
+
 export async function POST(request: Request) {
   try {
-    const { name, email, message }: {
-      name: string;
-      email: string;
-      message: string;
-    } = await request.json();
+    const { name, email, message, captchaToken }: { name: string; email: string; message: string; captchaToken: string; } = await request.json();
+
+    const isHuman = await verifyCaptcha(captchaToken!)
+    if (!isHuman) {
+      return new Response(
+        JSON.stringify({ error: "reCAPTCHA verification failed" }),
+        { status: 400 }
+      )
+    }
 
     const emailHtml = await render(
       <ContactEmailTemplate name={name} email={email} message={message} />

@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 enum Dispatch {
   Sending = "Sending",
@@ -18,6 +19,7 @@ enum Dispatch {
 export default function Contact() {
   const [rateLimitClient, setRateLimitClient] = useState(false);
   const [dispatchStage, setDispatchStage] = useState<Dispatch>(Dispatch.Waiting)
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   type FormData = {
     name: string;
@@ -43,7 +45,13 @@ export default function Contact() {
     setDispatchStage(Dispatch.Sending);
     setRateLimitClient(true);
 
+    if (!executeRecaptcha) {
+      setDispatchStage(Dispatch.Failed);
+      return;
+    }
+
     try {
+      const captchaToken = await executeRecaptcha("contact_form");
       const response = await fetch("/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -52,6 +60,7 @@ export default function Contact() {
           name: formData.name,
           email: formData.email,
           message: formData.message,
+          captchaToken: captchaToken,
         }),
       });
 
@@ -165,6 +174,27 @@ export default function Contact() {
                   <span className={cn(messageValue.length > 1000 && "text-red")}>{messageValue.length}</span>/1000
                 </div>
               </div>
+            </div>
+            <div className="text-muted-foreground text-sm pt-2">
+              <p>
+                This site is protected by reCAPTCHA and the Google{" "}
+                <Link
+                  className="text-lavender"
+                  target="_blank"
+                  href="https://policies.google.com/privacy"
+                >
+                  Privacy Policy
+                </Link>
+                {" "}and{" "}
+                <Link
+                  className="text-lavender"
+                  target="_blank"
+                  href="https://policies.google.com/terms"
+                >
+                  Terms of Service
+                </Link>{" "}
+                apply.
+              </p>
             </div>
             <div className="flex items-center">
               <button

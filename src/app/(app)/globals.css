@@ -6,6 +6,8 @@
   --secondary: #cdd6f4;
 }
 
+.grecaptcha-badge { visibility: hidden; }
+
 @theme {
   --color-primary: #1f1e2e;
 
